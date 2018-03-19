@@ -1,6 +1,7 @@
 #include "classes/liste.h"
 #include "classes/stack.h"
 #include "classes/queue.h"
+#include "classes/btree.h"
 
 using namespace std;
 
@@ -40,7 +41,7 @@ int main(void)
     //-----------------------------------
     //Test queue
 
-    Queue* file = new Queue();
+    /*Queue* file = new Queue();
     cout << file->is_empty() << endl;
     file->queue_old(9);
     file->queue(5);
@@ -53,8 +54,26 @@ int main(void)
     cout << file->peek() << endl;
     cout << file->is_empty() << endl;
     cout << file->count() << endl;
-    file->print();
+    file->print();*/
 
+    //-----------------------------------
+    //Test arbre binaire
+
+    BTree* tree = new BTree();
+    tree->insert(9);
+    tree->insert(5);
+    tree->insert(10);
+    tree->insert(8);
+    tree->insert(7);
+    tree->print(tree->get_root());
+    cout << endl;
+    cout << tree->search(2) << endl;
+    cout << tree->search(10) << endl;
+    cout << tree->min() << endl;
+    cout << tree->max() << endl;
+    tree->remove(5);
+    tree->print(tree->get_root());
+    cout << endl;
     return 0;
 }
 
