@@ -2,34 +2,39 @@
 
 using namespace std;
 
-Stack::Stack()
+template <class T>
+Stack<T>::Stack()
 {
     nb = 0;
 }
 
-int Stack::count() { return nb; }
+template <class T>
+int Stack<T>::count() { return nb; }
 
-int Stack::peek()
+template <class T>
+T Stack<T>::peek()
 {
     //Récupère la valeur du noeud en haut de la pile
     return first->get_value();
 }
 
-void Stack::push(int val)
+template <class T>
+void Stack<T>::push(T val)
 {
     // Crée un noeud avec la valeur "val" et l'insère au début de la pile
-    Node* node = new Node(val);
+    Node<T>* node = new Node<T>(val);
     node->set_next(first);
     first = node;
     nb++;
 }
 
-int Stack::pop()
+template <class T>
+T Stack<T>::pop()
 {
     // Enlève l'élément en haut de la pile
     int value = first->get_value();
-    Node* current = first;
-    Node* next = first->get_next();
+    Node<T>* current = first;
+    Node<T>* next = first->get_next();
 
     first = next;
 
@@ -40,17 +45,19 @@ int Stack::pop()
     return value;
 }
 
-bool Stack::is_empty()
+template <class T>
+bool Stack<T>::is_empty()
 {
     // Vérifie si la pile est vide
     return nb == 0;
 }
 
-void Stack::print()
+template <class T>
+void Stack<T>::print()
 {
     // Affichage custom de la pile
     cout << "[";
-    Node* current = first;
+    Node<T>* current = first;
 
     for(int i = 0; i < nb; i++)
     {
@@ -60,3 +67,4 @@ void Stack::print()
     cout << "]" << endl;
 }
 
+template class Stack<int>;

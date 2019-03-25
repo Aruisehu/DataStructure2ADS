@@ -8,7 +8,7 @@ using namespace std;
 int main(void)
 {
     // Test liste
-    /*Liste* liste = new Liste();
+    Liste<int>* liste = new Liste<int>();
 
     liste->insert_first(1);
     liste->insert_last(3);
@@ -18,11 +18,10 @@ int main(void)
     liste->print();
     liste->update(1, 10);
     liste->remove(0);
-    liste->print();*/
+    liste->print();
     //-----------------------------------
     //Test stack
-
-    /*Stack* pile = new Stack();
+    Stack<int>* pile = new Stack<int>();
 
     cout << pile->is_empty() << endl;
     pile->push(9);
@@ -36,12 +35,12 @@ int main(void)
     cout << pile->peek() << endl;
     cout << pile->is_empty() << endl;
     cout << pile->count() << endl;
-    pile->print();*/
+    pile->print();
 
     //-----------------------------------
     //Test queue
 
-    /*Queue* file = new Queue();
+    Queue<int>* file = new Queue<int>();
     cout << file->is_empty() << endl;
     file->queue_old(9);
     file->queue(5);
@@ -54,12 +53,12 @@ int main(void)
     cout << file->peek() << endl;
     cout << file->is_empty() << endl;
     cout << file->count() << endl;
-    file->print();*/
+    file->print(); 
 
     //-----------------------------------
     //Test arbre binaire
 
-    BTree* tree = new BTree();
+    /*BTree* tree = new BTree();
     tree->insert(9);
     tree->insert(5);
     tree->insert(10);
@@ -73,7 +72,7 @@ int main(void)
     cout << tree->max() << endl;
     tree->remove(5);
     tree->print(tree->get_root());
-    cout << endl;
+    cout << endl;*/
     return 0;
 }
 

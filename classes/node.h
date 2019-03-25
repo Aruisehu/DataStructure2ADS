@@ -2,18 +2,20 @@
 #define NODE_H
 
 #include <iostream>
+
+template <class T>
 class Node
 {
     public:
-        Node(int val);
-        int get_value();
-        void set_value(int val);
-        Node* get_next();
-        void set_next(Node* value);
+        Node(T val);
+        T get_value();
+        void set_value(T val);
+        Node<T>* get_next();
+        void set_next(Node<T>* value);
 
     private:
-        Node* next;
-        int value;
+        Node<T>* next;
+        T value;
 };
 
 #endif

@@ -2,26 +2,30 @@
 
 using namespace std;
 
-Queue::Queue()
+template <class T>
+Queue<T>::Queue()
 {
     nb = 0;
 }
 
-int Queue::count() { return nb; }
+template <class T>
+int Queue<T>::count() { return nb; }
 
-int Queue::peek()
+template <class T>
+T Queue<T>::peek()
 {
     //Récupère la valeur du noeud au début de la file
     return first->get_value();
 }
 
-void Queue::queue_old(int val)
+template <class T>
+void Queue<T>::queue_old(T val)
 {
     // Crée un noeud avec la valeur "val" et l'insère en fin de la file
-    Node* node = new Node(val);
+    Node<T>* node = new Node<T>(val);
     if (first != NULL)
     {
-        Node* current = first;
+        Node<T>* current = first;
 
         for(int i = 0; i < nb-1; i++)
         {
@@ -35,10 +39,11 @@ void Queue::queue_old(int val)
     last = node;
 }
 
-void Queue::queue(int val)
+template <class T>
+void Queue<T>::queue(T val)
 {
     // Crée un noeud avec la valeur "val" et l'insère en fin de la file
-    Node* node = new Node(val);
+    Node<T>* node = new Node<T>(val);
     if (first != NULL)
     {
         last->set_next(node);
@@ -49,12 +54,13 @@ void Queue::queue(int val)
     last = node;
 }
 
-int Queue::dequeue()
+template <class T>
+T Queue<T>::dequeue()
 {
     // Enlève le premier élément de la file
     int value = first->get_value();
-    Node* removed = first;
-    Node* next = removed->get_next();
+    Node<T>* removed = first;
+    Node<T>* next = removed->get_next();
 
     first = next;
 
@@ -65,17 +71,19 @@ int Queue::dequeue()
     return value;
 }
 
-bool Queue::is_empty()
+template <class T>
+bool Queue<T>::is_empty()
 {
     // Vérifie si la file est vide
     return nb == 0;
 }
 
-void Queue::print()
+template <class T>
+void Queue<T>::print()
 {
     // Affichage custom de la file
     cout << "[";
-    Node* current = first;
+    Node<T>* current = first;
 
     for(int i = 0; i < nb; i++)
     {
@@ -85,3 +93,4 @@ void Queue::print()
     cout << "]" << endl;
 }
 
+template class Queue<int>;

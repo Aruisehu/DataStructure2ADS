@@ -2,24 +2,28 @@
 
 using namespace std;
 
-Liste::Liste()
+template <class T>
+Liste<T>::Liste()
 {
     nb = 0;
 }
 
-int Liste::count() { return nb; }
-Node* Liste::get_first() { return first; }
+template <class T>
+int Liste<T>::count() { return nb; }
+template <class T>
+Node<T>* Liste<T>::get_first() { return first; }
 
-Node* Liste::get_node(int index)
+template <class T>
+Node<T>* Liste<T>::get_node(int index)
 {
     // Recupère le node à l'index "index"
     if (index >= nb or index < 0)
     {
         cout << "Error not that many element" << endl;
-        return NULL;
+        return 0;
     }
 
-    Node* current = first;
+    Node<T>* current = first;
 
     for(int i = 0; i < index; i++)
     {
@@ -27,16 +31,18 @@ Node* Liste::get_node(int index)
     }
     return current;
 }
-int Liste::get(int index)
+
+template <class T>
+T Liste<T>::get(int index)
 {
     //Récupère la valeur du noeud à l'index "index"
     if (index >= nb)
     {
         cout << "Error not that many element" << endl;
-        return -1;
+        return 0;
     }
 
-    Node* current = first;
+    Node<T>* current = first;
 
     for(int i = 0; i < index; i++)
     {
@@ -45,25 +51,28 @@ int Liste::get(int index)
     return current->get_value();
 }
 
-void Liste::insert_first(int val)
+template <class T>
+void Liste<T>::insert_first(T val)
 {
     // Crée un noeud avec la valeur "val" et l'insère au début de la liste
-    Node* node = new Node(val);
+    Node<T>* node = new Node<T>(val);
     node->set_next(first);
     first = node;
     nb++;
 }
 
-void Liste::insert_last(int val)
+template <class T>
+void Liste<T>::insert_last(T val)
 {
     // Crée un noeud avec la valeur "val" et l'insère en fin de la liste
-    Node* node = new Node(val);
-    Node* last = get_node(nb-1);
+    Node<T>* node = new Node<T>(val);
+    Node<T>* last = get_node(nb-1);
     last->set_next(node);
     nb++;
 }
 
-void Liste::insert(int val, int i)
+template <class T>
+void Liste<T>::insert(T val, int i)
 {
     // Crée un noeud avec la valeur "val" et l'insère en i-ème position dans la liste
     if (i >= nb)
@@ -72,9 +81,9 @@ void Liste::insert(int val, int i)
         return;
     }
 
-    Node* prev_node = get_node(i-1);
-    Node* next_node = get_node(i);
-    Node* new_node = new Node(val);
+    Node<T>* prev_node = get_node(i-1);
+    Node<T>* next_node = get_node(i);
+    Node<T>* new_node = new Node<T>(val);
 
     prev_node->set_next(new_node);
     new_node->set_next(next_node);
@@ -82,10 +91,11 @@ void Liste::insert(int val, int i)
     nb++;
 }
 
-int Liste::search(int val)
+template <class T>
+int Liste<T>::search(T val)
 {
     // Cherche un élément par valeur
-    Node* current = first;
+    Node<T>* current = first;
     for(int i = 0; i < nb; i++)
     {
         if (current->get_value() == val)
@@ -97,12 +107,13 @@ int Liste::search(int val)
     return -1; // Not found
 }
 
-void Liste::remove(int index)
+template <class T>
+void Liste<T>::remove(int index)
 {
     // Enlève l'élément à la position "index"
-    Node* removed = get_node(index);
-    Node* prev = get_node(index - 1);
-    Node* next = removed->get_next();
+    Node<T>* removed = get_node(index);
+    Node<T>* prev = get_node(index - 1);
+    Node<T>* next = removed->get_next();
 
     if (removed == NULL)
     {
@@ -123,7 +134,8 @@ void Liste::remove(int index)
     nb--;
 }
 
-void Liste::remove_by_value(int val)
+template <class T>
+void Liste<T>::remove_by_value(T val)
 {
     // Enlève la première occurence de "val" dans la liste, si elle est trouvée
     int index = search(val);
@@ -133,24 +145,27 @@ void Liste::remove_by_value(int val)
     }
 }
 
-void Liste::update(int index, int value)
+template <class T>
+void Liste<T>::update(int index, T value)
 {
     // Modifie la valeur du noeud à la position "index"
-    Node* node = get_node(index);
+    Node<T>* node = get_node(index);
     node->set_value(value);
 }
 
-bool Liste::is_empty()
+template <class T>
+bool Liste<T>::is_empty()
 {
     // Vérifie si la liste est vide
     return nb == 0;
 }
 
-void Liste::print()
+template <class T>
+void Liste<T>::print()
 {
     // Affichage custom de la liste
     cout << "[";
-    Node* current = first;
+    Node<T>* current = first;
 
     for(int i = 0; i < nb; i++)
     {
@@ -159,3 +174,5 @@ void Liste::print()
     }
     cout << "]" << endl;
 }
+
+template class Liste<int>;

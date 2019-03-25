@@ -3,22 +3,24 @@
 
 #include <iostream>
 #include "node.h"
+
+template <class T>
 class Queue
 {
     public:
         Queue();
         int count();
-        void queue_old(int val);
-        void queue(int val);
-        int dequeue();
-        int peek();
+        void queue_old(T val);
+        void queue(T val);
+        T dequeue();
+        T peek();
         bool is_empty();
         void print();
 
 
     private:
-        Node* first;
-        Node* last;
+        Node<T>* first;
+        Node<T>* last;
         int nb;
 };
 

@@ -3,20 +3,22 @@
 
 #include <iostream>
 #include "node.h"
+
+template <class T>
 class Stack
 {
     public:
         Stack();
         int count();
-        void push(int val);
-        int peek();
-        int pop();
+        void push(T val);
+        T peek();
+        T pop();
         bool is_empty();
         void print();
 
 
     private:
-        Node* first;
+        Node<T>* first;
         int nb;
 };
 

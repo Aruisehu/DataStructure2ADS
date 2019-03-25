@@ -3,28 +3,30 @@
 
 #include <iostream>
 #include "node.h"
+
+template <class T>
 class Liste
 {
     public:
         Liste();
         int count();
-        Node* get_first();
-        void insert_first(int val);
-        void insert_last(int val);
-        void insert(int val, int i);
-        int get(int index);
-        int search(int val);
+        Node<T>* get_first();
+        void insert_first(T val);
+        void insert_last(T val);
+        void insert(T val, int i);
+        T get(int index);
+        int search(T val);
         void remove(int index);
-        void remove_by_value(int val);
-        void update(int index, int value);
+        void remove_by_value(T val);
+        void update(int index, T value);
         bool is_empty();
         void print();
 
 
     private:
-        Node* first;
+        Node<T>* first;
         int nb;
-        Node* get_node(int index);
+        Node<T>* get_node(int index);
 };
 
 #endif
