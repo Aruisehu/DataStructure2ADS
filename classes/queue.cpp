@@ -58,7 +58,7 @@ template <class T>
 T Queue<T>::dequeue()
 {
     // Enlève le premier élément de la file
-    int value = first->get_value();
+    T value = first->get_value();
     Node<T>* removed = first;
     Node<T>* next = removed->get_next();
 

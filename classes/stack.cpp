@@ -32,7 +32,7 @@ template <class T>
 T Stack<T>::pop()
 {
     // Enlève l'élément en haut de la pile
-    int value = first->get_value();
+    T value = first->get_value();
     Node<T>* current = first;
     Node<T>* next = first->get_next();
 

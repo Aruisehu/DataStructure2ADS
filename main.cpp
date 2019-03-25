@@ -8,7 +8,7 @@ using namespace std;
 int main(void)
 {
     // Test liste
-    Liste<int>* liste = new Liste<int>();
+    /*Liste<int>* liste = new Liste<int>();
 
     liste->insert_first(1);
     liste->insert_last(3);
@@ -18,7 +18,7 @@ int main(void)
     liste->print();
     liste->update(1, 10);
     liste->remove(0);
-    liste->print();
+    liste->print();*/
     //-----------------------------------
     //Test stack
     Stack<int>* pile = new Stack<int>();
@@ -36,6 +36,8 @@ int main(void)
     cout << pile->is_empty() << endl;
     cout << pile->count() << endl;
     pile->print();
+
+    cout << "QUEUE" << endl;
 
     //-----------------------------------
     //Test queue
